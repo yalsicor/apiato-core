@@ -16,12 +16,6 @@
       "email": "sebastian.weckend@posteo.de"
     }
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/yalsicor/heimdal.git"
-    }
-  ],
   "keywords": [
     "apiato",
     "apiato core",
@@ -36,7 +30,6 @@
     "fruitcake/laravel-cors": "^1.0",
     "spatie/laravel-fractal": "5.6.*",
     "vinkla/hashids": "^7.0",
-    "optimus/heimdal" : "dev-master",
     "dto/dto" : "^3.2"
   },
   "require-dev": {

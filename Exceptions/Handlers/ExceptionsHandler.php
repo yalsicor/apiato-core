@@ -5,14 +5,13 @@ namespace Apiato\Core\Exceptions\Handlers;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as LaravelExceptionHandler;
 use Illuminate\Support\Facades\Config;
-use Optimus\Heimdal\ExceptionHandler as HeimdalExceptionHandler;
 
 /**
  * Class ExceptionsHandler
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ExceptionsHandler extends HeimdalExceptionHandler
+class ExceptionsHandler extends LaravelExceptionHandler
 {
     public function render($request, Exception $e)
     {

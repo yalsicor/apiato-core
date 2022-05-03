@@ -15,7 +15,6 @@ use Fruitcake\Cors\CorsServiceProvider as CorsServiceProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Tinker\TinkerServiceProvider;
-use Optimus\Heimdal\Provider\LaravelServiceProvider as HeimdalExceptionsServiceProvider;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
 use Spatie\Fractal\FractalFacade;
 use Spatie\Fractal\FractalServiceProvider;
@@ -48,7 +47,6 @@ class ApiatoProvider extends AbstractMainProvider
         RepositoryServiceProvider::class,
         CorsServiceProvider::class,
         FractalServiceProvider::class,
-        HeimdalExceptionsServiceProvider::class,
 
         // add the Laravel Tinker Service Provider
         TinkerServiceProvider::class,
