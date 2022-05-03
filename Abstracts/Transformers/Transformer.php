@@ -8,6 +8,8 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use ErrorException;
 use Exception;
 use Illuminate\Support\Facades\Config;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 use League\Fractal\Scope;
 use League\Fractal\TransformerAbstract as FractalTransformer;
 
@@ -18,7 +20,6 @@ use League\Fractal\TransformerAbstract as FractalTransformer;
  */
 abstract class Transformer extends FractalTransformer
 {
-
     /**
      * @return  mixed
      */
@@ -51,7 +52,7 @@ abstract class Transformer extends FractalTransformer
      *
      * @return \League\Fractal\Resource\Item
      */
-    public function item($data, $transformer, $resourceKey = null)
+    protected function item($data, $transformer, ?string $resourceKey = null): Item
     {
         // set a default resource key if none is set
         if (!$resourceKey && $data) {
@@ -68,7 +69,7 @@ abstract class Transformer extends FractalTransformer
      *
      * @return \League\Fractal\Resource\Collection
      */
-    public function collection($data, $transformer, $resourceKey = null)
+    protected function collection($data, $transformer, ?string $resourceKey = null): Collection
     {
         // set a default resource key if none is set
         if (!$resourceKey && $data->isNotEmpty()) {
@@ -102,5 +103,4 @@ abstract class Transformer extends FractalTransformer
             throw new CoreInternalErrorException();
         }
     }
-
 }

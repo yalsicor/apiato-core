@@ -14,7 +14,6 @@ use Mockery;
  */
 trait TestsMockHelperTrait
 {
-
     /**
      * Mocking helper
      *
@@ -22,12 +21,11 @@ trait TestsMockHelperTrait
      *
      * @return  \Mockery\MockInterface
      */
-    public function mock($class)
+    public function mock($class, $closure = null)
     {
-        $mock = Mockery::mock($class);
+        $mock = Mockery::mock($class, $closure);
         App::instance($class, $mock);
 
         return $mock;
     }
-
 }
