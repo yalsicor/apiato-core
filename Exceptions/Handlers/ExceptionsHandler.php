@@ -5,6 +5,7 @@ namespace Apiato\Core\Exceptions\Handlers;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as LaravelExceptionHandler;
 use Illuminate\Support\Facades\Config;
+use Throwable;
 
 /**
  * Class ExceptionsHandler
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Config;
  */
 class ExceptionsHandler extends LaravelExceptionHandler
 {
-    public function render($request, Exception $e)
+    public function render($request, Throwable $e)
     {
         // if the user expects json or the API forces the user to send it
         if (($request->expectsJson()) || (Config::get('apiato.requests.force-accept-header'))) {
