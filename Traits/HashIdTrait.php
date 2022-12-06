@@ -177,16 +177,21 @@ trait HashIdTrait
     }
 
     /**
-     * @param      $id
+     * @param string|null $id
      * @param null $parameter
      *
-     * @return array
-     * @throws IncorrectIdException
+     * @return int|null
+     *
+     * if the decoded id is bigger than PHP_INT_MAX, the decoder will return a string
+     * we will cut that off from propagating, because such big numerical identifiers
+     * are not practically used
+     *
+     * if the id is not decodable, null will be returned
      */
-    public function decode($id, $parameter = null)
+    public function decode(?string $id, $parameter = null): ?int
     {
         // check if passed as null, (could be an optional decodable variable)
-        if (is_null($id) || strtolower($id) == 'null') {
+        if (is_null($id) || strtolower($id) === 'null') {
             return $id;
         }
 
@@ -196,7 +201,11 @@ trait HashIdTrait
         }
 
         // do the decoding if the ID looks like a hashed one
-        return empty($this->decoder($id)) ? [] : $this->decoder($id)[0];
+        if (!empty($this->decoder($id))) {
+            return is_string($this->decoder($id)[0]) ? null : $this->decoder($id)[0];
+        }
+
+        return null;
     }
 
     /**
